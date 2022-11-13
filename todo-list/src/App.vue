@@ -1,11 +1,9 @@
 <template>
   <div>
     <div>Todo APP</div>
-    <AddTodo></AddTodo>
+    <AddTodo v-on:add-todo="addTodo"></AddTodo>
     <hr />
-    <TodoList v-bind:todos="todos" 
-    v-on:remove-todo="removeTodo"
-    ></TodoList>
+    <TodoList v-bind:todos="todos" v-on:remove-todo="removeTodo"></TodoList>
   </div>
 </template>
 
@@ -29,10 +27,13 @@ export default {
     AddTodo,
   },
   methods: {
-    removeTodo(id){
-      this.todos = this.todos.filter(item => item.id !== id);
-    }
-  }
+    removeTodo(id) {
+      this.todos = this.todos.filter((item) => item.id !== id);
+    },
+    addTodo(todo) {
+      this.todos.push(todo)
+    },
+  },
 };
 </script>
 

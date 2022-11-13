@@ -1,16 +1,26 @@
 <template>
   <li>
-    <span v-bind:class="{done: todo.complited}">
-      <input type="checkbox" v-on:change="todo.complited = !todo.complited"/>
-      {{ todo.id }}
+    <span v-bind:class="{ done: todo.complited }">
+      <input type="checkbox" v-on:change="todo.complited = !todo.complited" />
+      <!-- для вывода индекса с единицы -->
+      {{ indexId + 1 }}
       {{ todo.title }}
     </span>
-    <button class="btn_del" v-on:click="$emit('remove-todo', todo.id)">&times;</button>
+    <button class="btn_del" v-on:click="$emit('remove-todo', todo.id)">
+      &times;
+    </button>
   </li>
 </template>
 <script>
 export default {
-  props: ["todo"],
+  // props: {
+  //   todo: {
+  //     type: Object,
+  //     required: true,
+  //   },
+  //   indexId: Number,
+  // },
+  props: ['todo', 'indexId']
 };
 </script>
 
