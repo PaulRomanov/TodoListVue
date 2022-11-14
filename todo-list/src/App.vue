@@ -14,11 +14,7 @@ import AddTodo from "./components/AddTodo.vue";
 export default {
   data() {
     return {
-      todos: [
-        { id: 1, title: "Tasck 1", complited: false },
-        { id: 2, title: "Tasck 2", complited: false },
-        { id: 3, title: "Tasck 3", complited: false },
-      ],
+      todos: [],
     };
   },
   name: "App",
@@ -26,12 +22,20 @@ export default {
     TodoList,
     AddTodo,
   },
+  //компонент подготовил HTML и поместил его в DOM
+  //https://jsonplaceholder.typicode.com/
+  //для генерации todo, что-бы указать по умолчанию кол-во: ?_limit=3
+  mounted() {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=3")
+      .then((response) => response.json())
+      .then(json => {this.todos = json})
+  },
   methods: {
     removeTodo(id) {
       this.todos = this.todos.filter((item) => item.id !== id);
     },
     addTodo(todo) {
-      this.todos.push(todo)
+      this.todos.push(todo);
     },
   },
 };
