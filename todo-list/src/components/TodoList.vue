@@ -28,7 +28,8 @@ export default {
   },
 };
 </script>
-
+<!-- Когда у тега <style> есть атрибут scoped, 
+  то его CSS будет применяться только к элементам текущего компонента.  -->
 <style scoped>
 ul {
   list-style: none;
